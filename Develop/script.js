@@ -51,3 +51,17 @@ function updateLocalStorage() {
         }, 100);
     };
 };
+
+// Saved tasks 
+function writeCurrentTasks() {
+    $.each(hourlyTime, function (i) {
+        if (hourlyTime[i]) {
+            task[i].value = hourlyTime[i].task;
+        };
+    });
+};
+
+
+updateSchedule();
+writeCurrentTasks();
+$("button").click(updateLocalStorage);
