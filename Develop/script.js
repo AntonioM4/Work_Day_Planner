@@ -61,6 +61,16 @@ function writeCurrentTasks() {
     });
 };
 
+setInterval(function () {
+    currentTime = moment();
+    if (currentHour < currentTime.hour()) {
+        updateSchedule();
+    } else if (currentHour > currentTime.hour()) {
+        updateSchedule();
+        $("#currentDay").text(`${currentTime.format('dddd, MMMM Do')}`);
+    }
+}, 1000);
+
 
 updateSchedule();
 writeCurrentTasks();
