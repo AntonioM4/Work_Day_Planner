@@ -69,3 +69,17 @@ textarea {
   font-size: 20px;
   transition: all 0.3s ease-in-out;
 }
+
+.alert-animation {
+  animation-name: show-and-hide;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-in-out;
+  animation-duration: 4s;
+}
+
+@media (max-width: 600px) {
+  .row {
+    margin-left: 2%;
+    margin-right: 2%;
+  }
+}
