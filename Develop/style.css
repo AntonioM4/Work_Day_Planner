@@ -83,3 +83,18 @@ textarea {
     margin-right: 2%;
   }
 }
+
+@keyframes show-and-hide {
+  0% {
+    bottom: -80px;
+  }
+  15% {
+    bottom: 0;
+  }
+  85% {
+    bottom: 0;
+  }
+  100% {
+    bottom: -80px;
+  }
+}

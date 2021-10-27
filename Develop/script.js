@@ -3,8 +3,8 @@ var hourlyTime;
 var currentTime = moment();
 var currentHour;
 var textBlock = $(".col-8");
-var plannerTask = $("textarea");
-$.each(plannerTask, function () {
+var task = $("textarea");
+$.each(task, function () {
     this.value = "";
 });
 
@@ -25,9 +25,29 @@ function updateSchedule() {
             $(this).addClass('past');
         } else if (scheduleBlock == (currentTime.hour() - 9)) {
             $(this).addClass('present');
-        }else {
+        } else {
             $(this).addClass('future');
         }
     });
     currentHour = currentTime.hour();
+};
+
+
+// delay animation and allowing animation to replay 
+function updateLocalStorage() {
+    event.preventDefault();
+    let btnIndex = Number($(this).attr('id'));
+    $('.alert-success').removeClass('alert-animation');
+
+    if (task[btnIndex].value.trim() != "") {
+        hourlyTime[btnIndex] = {
+            time: $(".hour")[btnIndex].textContent.trim(),
+            task: task[btnIndex].value
+        };
+        localStorage.setItem("localHourlyTasks", JSON.stringify(hourlyTime));
+        setTimeout(function () {
+            $('.alert-success').addClass('alert-animation');
+            $('.alert-success').text(`Successfully saved task at ${$(".hour")[btnIndex].textContent.trim()}!`);
+        }, 100);
+    };
 };
